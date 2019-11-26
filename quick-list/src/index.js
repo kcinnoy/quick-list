@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {useContext, useReducer} from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
-import App from './App';
+// import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-export const UserContext = React.createContext()
-const username = "Dave"
+export const App = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
 
 ReactDOM.render(
-  <UserContext.Provider value={username}>
     <App />
-  </UserContext.Provider>
 ,document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
