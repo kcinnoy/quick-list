@@ -2,6 +2,8 @@ import React, {useContext, useReducer} from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
 // import App from './App';
+import TodosContext from './context'
+import TodosReducer from './reducer'
 import * as serviceWorker from './serviceWorker';
 
 export const App = () => {

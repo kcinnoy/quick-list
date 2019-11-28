@@ -1,6 +1,7 @@
 import React from 'react'
+import { defaultCipherList } from 'constants';
 
-React.createContext({
+const TodosContext = React.createContext({
   todos: [
     {id: 1, text: "Eat Breakfast", complet: false},
     {id: 1, text: "Eat Breakfast", complet: false},
@@ -8,3 +9,5 @@ React.createContext({
   ]
 
 })
+
+export default TodosContext
