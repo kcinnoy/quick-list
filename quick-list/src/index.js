@@ -7,16 +7,15 @@ import TodosReducer from './reducer'
 import * as serviceWorker from './serviceWorker';
 
 export const App = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+  const initialState = useContext(TodosContext)
+  const [state,dispatch] = useReducer(TodosReducer, initialState)
 }
 
 
 ReactDOM.render(
+  <TodosContext.Provider>
     <App />
+  </TodosContext.Provider>
 ,document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
