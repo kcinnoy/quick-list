@@ -17,10 +17,10 @@ export default function TodoList() {
         {state.todos.map(todo => (
         <li className=" flex items-center bg-orange-600 border-black border-dashed border-2 my-2 py-4" key={todo.id} >
             <span 
-              className="flex-1 ml-12 cursor-pointer"
-              onDoubleClick={()=> dispatchx({type: "TOGGLE_TODO", payload: todo})}
+              className={`flex-1 ml-12 cursor-pointer ${todo.complete &&
+              "line-through text-gray-600"}`}
+              onDoubleClick={()=> dispatch({type: "TOGGLE_TODO", payload: todo})}
             > 
-              
               {todo.text}
             </span>
             <button>
