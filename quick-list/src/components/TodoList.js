@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import TodosContext from '../context'
+import axios from 'axios';
 
 export default function TodoList() {
   const {state, dispatch} = useContext(TodosContext);
@@ -19,14 +20,23 @@ export default function TodoList() {
             <span 
               className={`flex-1 ml-12 cursor-pointer ${todo.complete &&
               "line-through text-gray-600"}`}
-              onDoubleClick={()=> dispatch({type: "TOGGLE_TODO", payload: todo})}
+              onDoubleClick={async()=> {
+                const response = await axios.patch(`https://hooks-api-eosin-one.now.sh/todos/${todo.id}`,{
+                  complete: !todo.complete
+                })
+                dispatch({type: "TOGGLE_TODO", payload: response.data})
+              }}
             > 
               {todo.text}
             </span>
             <button onClick={() => dispatch({type: "SET_CURRENT_TODO", payload: todo})}>
               <img src="https://icon.now.sh/edit/0050c5" alt="Edit Icon" className= "h-6"/>
             </button>
-            <button onClick={() => dispatch({type: "REMOVE_TODO", payload: todo})}>
+            <button onClick={ async () => {
+              await axios.delete
+              (`https://hooks-api-eosin-one.now.sh/todos/${todo.id}`)
+              dispatch({type: "REMOVE_TODO", payload: todo})
+            }}>
               <img src="https://icon.now.sh/delete/8b0000" alt="Delete Icon" className= "h-6"/>
             </button>
         </li>
